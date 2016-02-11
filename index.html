@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>M7017E:Lab1</title>
+
+    <style>
+        h1{
+            font-family:"AR DESTINE";
+            margin-left: 10px;
+            color: darkorange;
+        }
+
+        h2{
+            font-family: "Agency FB";
+            margin-left: 10px;
+            padding-bottom: 10px;
+            color: darkolivegreen;
+            font-size: large;
+        }
+
+
+        button {
+            width: 644px;
+            height:50px;
+            background-color: black;
+            border:none;
+            font-family: "AR DESTINE";
+            color: darkgray;
+            font-size: xx-large;
+
+        }
+
+        video {
+            background-color: gainsboro;
+            width: 320px;
+            height: 240px;
+        }
+
+        #pane {
+            background-color: gold;
+        }
+    </style>
+
+
+    <script src="js/client.js"></script>
+</head>
+<body onload="pageLoaded()">
+    <div id="pane">
+    <h1>M7017E Lab 2: One-to-one video conference</h1>
+    <h2>By Anders and Per</h2></div>
+
+    <video id="localVid" autoplay muted></video>
+    <video id="remoteVid" autoplay></video>
+
+    <br>
+
+    <button id="callButton" onclick="call()">Call</button>
+
+</body>
+</html>
