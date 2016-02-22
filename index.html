@@ -15,7 +15,7 @@
             font-family: "Agency FB";
             margin-left: 10px;
             padding-bottom: 10px;
-            color: darkolivegreen;
+            color: black;
             font-size: large;
         }
 
@@ -28,7 +28,15 @@
             font-family: "AR DESTINE";
             color: darkgray;
             font-size: xx-large;
+            margin: 2px;
+            margin-left: 0;
+        }
 
+        #serverIP{
+            margin: 2px;
+            margin-left: 0;
+            background-color: aliceblue;
+            border: none;
         }
 
         video {
@@ -45,7 +53,7 @@
 
     <script src="js/client.js"></script>
 </head>
-<body <!--onload="pageLoaded()"-->>
+<body bgcolor="#5f9ea0">
     <div id="pane">
     <h1>M7017E Lab 2: One-to-one video conference</h1>
     <h2>By Anders and Per</h2></div>
@@ -53,12 +61,23 @@
     <video id="localVid" autoplay muted></video>
     <video id="remoteVid" autoplay></video>
 
+
+    <br>
+    <input type="text" id="serverIP" value="ws://localhost:3434">
+    <br>
+
+    <button id="ipButton" onclick="setIP()">Set server IP</button>
+
+    <br>
+
+    <button id="startButton" onclick="start()">Start camera</button>
+
     <br>
 
     <button id="callButton" onclick="call()">Call</button>
-    <script type="text/javascript">
-        pageLoaded();
-    </script>
+    <!--<script type="text/javascript">
+        start();
+    </script>-->
 
 </body>
 </html>
