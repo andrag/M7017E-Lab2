@@ -24,7 +24,7 @@ function pageLoaded(){
     localVid = document.getElementById('localVid');
     remoteVid = document.getElementById('remoteVid');
 
-    serverConnection = new WebSocket('ws://localhost:3434');//Use the IP of the server here
+    serverConnection = new WebSocket('ws://100.67.23.69:3434');//Use the IP of the server here
     serverConnection.onmessage = handleIncomingMessage;
 
 
