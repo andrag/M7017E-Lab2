@@ -20,7 +20,7 @@
         }
 
 
-        button {
+        #callButton {
             width: 644px;
             height:50px;
             background-color: black;
@@ -30,6 +30,24 @@
             font-size: xx-large;
 
         }
+
+        #ipButton{
+            width: 322px;
+            height:50px;
+            background-color: black;
+            border:none;
+            font-family: "AR DESTINE";
+            color: darkgray;
+            font-size: xx-large;
+            margin: 5px;
+        }
+
+        #serverIP{
+
+
+        }
+
+
 
         video {
             background-color: gainsboro;
@@ -45,7 +63,7 @@
 
     <script src="js/client.js"></script>
 </head>
-<body <!--onload="pageLoaded()"-->>
+<body bgcolor="#5f9ea0">
     <div id="pane">
     <h1>M7017E Lab 2: One-to-one video conference</h1>
     <h2>By Anders and Per</h2></div>
@@ -53,9 +71,15 @@
     <video id="localVid" autoplay muted></video>
     <video id="remoteVid" autoplay></video>
 
+
     <br>
 
     <button id="callButton" onclick="call()">Call</button>
+
+    <br>
+
+    <input type="text" id="serverIP" value="Enter server IP here...">
+    <button id="ipButton" onclick="setIP()">Submit IP</button>
     <script type="text/javascript">
         pageLoaded();
     </script>

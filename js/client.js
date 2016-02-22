@@ -1,7 +1,3 @@
-/**
- * Created by Anders on 2016-02-11.
- */
-
 var localVid, remoteVid, peerConnection;
 var peerConnectionArgs = {'iceServers': [{'url': 'stun:stun.services.mozilla.com'}, {'url': 'stun:stun.l.google.com:19302'}]};
 
@@ -19,21 +15,29 @@ window.RTCSessionDescription = window.RTCSessionDescription || window.mozRTCSess
 
 //---------------------------------------------Getting the local media stream-------------------------------------------
 
+var serverIP = 'ws://localhost:3434';
+
+function setIP(){
+    //Should error check the value from the form
+    var text = document.getElementById('serverIP');
+    serverIP = text.value;
+    console.log('Server IP address: ', serverIP);
+}
+
 
 function pageLoaded(){
     localVid = document.getElementById('localVid');
     remoteVid = document.getElementById('remoteVid');
 
-    serverConnection = new WebSocket('ws://localhost:3434');//Use the IP of the server here
+    serverConnection = new WebSocket(serverIP);//Use the IP of the server here
     serverConnection.onmessage = handleIncomingMessage;
 
 
-    //If it doesn't work, try the traditional approach
-    if(navigator.getUserMedia){//Or navigator,MediaDevices.getUserMedia, or just navigator.getUserMedia
+
+    if(navigator.getUserMedia){
         navigator.mediaDevices.getUserMedia(constraints)
             .then(onMediaSuccess)
             .catch(function(error){
-                //Do some logging
                 console.error(error);
             })
     } else {
@@ -47,7 +51,7 @@ function onMediaSuccess(stream){
     localVid.src = window.URL.createObjectURL(stream);
 }
 
-//-------------------------------Communication of signalling and SDP messages through the server------------------------
+//-------------------------------Communication of signaling and SDP messages through the server------------------------
 
 function call(){
     peerConnection = new RTCPeerConnection(peerConnectionArgs);
@@ -55,10 +59,10 @@ function call(){
     peerConnection.onaddstream = gotRemoteStream;
     peerConnection.addStream(localStream);
 
-    peerConnection.createOffer(gotDescription, logError);//Maybe an if statement for checking who is the caller?
+    peerConnection.createOffer(gotDescription, logError);
 }
 
-//Test this
+
 function recieveCall(){
     peerConnection = new RTCPeerConnection(peerConnectionArgs);
     peerConnection.onicecandidate = gotIceCandidate;
