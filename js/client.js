@@ -12,7 +12,7 @@ var constraints = {
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkit.getUserMedia;
 window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
-window.RTCRTCIceCandidate = window.RTCRTCIceCandidate || window.mozRTCIceCandidate || window.webkitRTCIceCandidate;
+window.RTCIceCandidate = window.RTCIceCandidate || window.mozRTCIceCandidate || window.webkitRTCIceCandidate;
 window.RTCSessionDescription = window.RTCSessionDescription || window.mozRTCSessionDescription || window.webkitRTCSessionDescription;
 
 
@@ -75,8 +75,8 @@ function handleIncomingMessage(message){
         peerConnection.setRemoteDescription(
             new RTCSessionDescription(signal.sdp),
             function() {
-                peerConnection.createAnswer(gotDescription, logError());},
-            logError());
+                peerConnection.createAnswer(gotDescription, logError);},
+            logError);
     } else if(signal.ice) {
         peerConnection.addIceCandidate(new RTCIceCandidate(signal.ice));
     }
@@ -88,9 +88,17 @@ function gotIceCandidate(event){
         serverConnection.send(JSON.stringify({'ice': event.candidate}));
     }
 }
-
+/*
 function gotDescription(description){
     peerConnection.setLocalDescription(description, onSetDescription, function() {console.log('Failed setting local description')});
+ console.log('got description');
+}*/
+//The original:
+function gotDescription(description) {
+    console.log('got description');
+    peerConnection.setLocalDescription(description, function () {
+        serverConnection.send(JSON.stringify({'sdp': description})) ;
+    }, function() {console.log('set description error')});
 }
 
 function onSetDescription(description){
@@ -104,6 +112,8 @@ function gotRemoteStream(event){
 function logError(error){
     console.log(error);
 }
+
+
 
 
 

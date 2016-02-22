@@ -45,7 +45,7 @@
 
     <script src="js/client.js"></script>
 </head>
-<body onload="pageLoaded()">
+<body <!--onload="pageLoaded()"-->>
     <div id="pane">
     <h1>M7017E Lab 2: One-to-one video conference</h1>
     <h2>By Anders and Per</h2></div>
@@ -56,6 +56,9 @@
     <br>
 
     <button id="callButton" onclick="call()">Call</button>
+    <script type="text/javascript">
+        pageLoaded();
+    </script>
 
 </body>
 </html>
