@@ -17,15 +17,24 @@ window.RTCSessionDescription = window.RTCSessionDescription || window.mozRTCSess
 
 var serverIP = 'ws://localhost:3434';
 
+
 function setIP(){
     //Should error check the value from the form
     var text = document.getElementById('serverIP');
     serverIP = text.value;
+    text.value = "";
+
+    //var ipButton = document.getElementById('ipButton');
+    //ipButton.style.backgroundColor = "#556b2f";
     console.log('Server IP address: ', serverIP);
+
 }
 
 
-function pageLoaded(){
+function start(){
+
+    //setIP();
+
     localVid = document.getElementById('localVid');
     remoteVid = document.getElementById('remoteVid');
 

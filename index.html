@@ -15,12 +15,12 @@
             font-family: "Agency FB";
             margin-left: 10px;
             padding-bottom: 10px;
-            color: darkolivegreen;
+            color: black;
             font-size: large;
         }
 
 
-        #callButton {
+        button {
             width: 644px;
             height:50px;
             background-color: black;
@@ -28,26 +28,16 @@
             font-family: "AR DESTINE";
             color: darkgray;
             font-size: xx-large;
-
-        }
-
-        #ipButton{
-            width: 322px;
-            height:50px;
-            background-color: black;
-            border:none;
-            font-family: "AR DESTINE";
-            color: darkgray;
-            font-size: xx-large;
-            margin: 5px;
+            margin: 2px;
+            margin-left: 0;
         }
 
         #serverIP{
-
-
+            margin: 2px;
+            margin-left: 0;
+            background-color: aliceblue;
+            border: none;
         }
-
-
 
         video {
             background-color: gainsboro;
@@ -73,16 +63,21 @@
 
 
     <br>
+    <input type="text" id="serverIP" value="ws://localhost:3434">
+    <br>
 
-    <button id="callButton" onclick="call()">Call</button>
+    <button id="ipButton" onclick="setIP()">Set server IP</button>
 
     <br>
 
-    <input type="text" id="serverIP" value="Enter server IP here...">
-    <button id="ipButton" onclick="setIP()">Submit IP</button>
-    <script type="text/javascript">
-        pageLoaded();
-    </script>
+    <button id="startButton" onclick="start()">Start camera</button>
+
+    <br>
+
+    <button id="callButton" onclick="call()">Call</button>
+    <!--<script type="text/javascript">
+        start();
+    </script>-->
 
 </body>
 </html>
