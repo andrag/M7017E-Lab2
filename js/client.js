@@ -5,7 +5,7 @@ var constraints = {
     audio: true,
     video: true
 };
-
+//ws://100.67.23.69:3434 Anders IP
 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkit.getUserMedia;
 window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
 window.RTCIceCandidate = window.RTCIceCandidate || window.mozRTCIceCandidate || window.webkitRTCIceCandidate;
@@ -38,11 +38,8 @@ function start(){
     localVid = document.getElementById('localVid');
     remoteVid = document.getElementById('remoteVid');
 
-<<<<<<< HEAD
-    serverConnection = new WebSocket('ws://100.67.23.69:3434');//Use the IP of the server here
-=======
     serverConnection = new WebSocket(serverIP);//Use the IP of the server here
->>>>>>> 9dfbbe4b813ef0c151e1651367546749d23daf36
+
     serverConnection.onmessage = handleIncomingMessage;
 
 
