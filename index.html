@@ -32,6 +32,10 @@
             margin-left: 0;
         }
 
+        button:disabled{
+            background-color: dimgray;
+        }
+
         #serverIP{
             margin: 2px;
             margin-left: 0;
@@ -70,11 +74,11 @@
 
     <br>
 
-    <button id="startButton" onclick="start()">Start camera</button>
+    <button id="startButton" onclick="start()" disabled>Start camera</button>
 
     <br>
 
-    <button id="callButton" onclick="call()">Call</button>
+    <button id="callButton" onclick="call()" disabled>Call</button>
     <!--<script type="text/javascript">
         start();
     </script>-->
