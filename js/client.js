@@ -7,7 +7,7 @@ var constraints = {
     audio: true,
     video: true
 };
-
+//ws://100.67.23.69:3434 Anders IP
 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkit.getUserMedia;
 window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
 window.RTCIceCandidate = window.RTCIceCandidate || window.mozRTCIceCandidate || window.webkitRTCIceCandidate;
@@ -40,6 +40,7 @@ function start(){
     remoteVid = document.getElementById('remoteVid');
 
     serverConnection = new WebSocket(serverIP);//Use the IP of the server here
+
     serverConnection.onmessage = handleIncomingMessage;
 
     if(navigator.getUserMedia){
