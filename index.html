@@ -53,8 +53,7 @@
             background-color: gold;
         }
     </style>
-
-
+    
     <script src="js/client.js"></script>
 </head>
 <body bgcolor="#5f9ea0">
@@ -64,24 +63,17 @@
 
     <video id="localVid" autoplay muted></video>
     <video id="remoteVid" autoplay></video>
-
-
     <br>
+
     <input type="text" id="serverIP" value="ws://localhost:3434">
     <br>
 
     <button id="ipButton" onclick="setIP()">Set server IP</button>
-
     <br>
 
     <button id="startButton" onclick="start()" disabled>Start camera</button>
-
     <br>
 
     <button id="callButton" onclick="call()" disabled>Call</button>
-    <!--<script type="text/javascript">
-        start();
-    </script>-->
-
 </body>
 </html>

@@ -18,20 +18,15 @@ window.RTCSessionDescription = window.RTCSessionDescription || window.mozRTCSess
 //---------------------------------------------Getting the local media stream-------------------------------------------
 
 var serverIP = 'ws://localhost:3434';
-//var startButton = document.getElementById('startButton');
-//var setIPButton = document.getElementById('ipButton');
-//var callButton = document.getElementById('callButton');
-
 
 function setIP(){
-    //Should error check the value from the form
+    //No error check made
     var text = document.getElementById('serverIP');
     serverIP = text.value;
     text.value = "";
-    //var ipButton = document.getElementById('ipButton');
-    //ipButton.style.backgroundColor = "#556b2f";
+
     console.log('Server IP address: ', serverIP);
-    //startButton = document.getElementById('startButton');
+
     startButton = document.getElementById('startButton');
     setIPButton = document.getElementById('ipButton');
     setIPButton.disabled = true;
@@ -40,8 +35,6 @@ function setIP(){
 
 
 function start(){
-
-    //setIP();
 
     localVid = document.getElementById('localVid');
     remoteVid = document.getElementById('remoteVid');
@@ -73,8 +66,6 @@ function onMediaSuccess(stream){
 //-------------------------------Communication of signaling and SDP messages through the server------------------------
 
 function call(){
-
-
 
     peerConnection = new RTCPeerConnection(peerConnectionArgs);
     peerConnection.onicecandidate = gotIceCandidate;
@@ -114,12 +105,7 @@ function gotIceCandidate(event){
         serverConnection.send(JSON.stringify({'ice': event.candidate}));
     }
 }
-/*
-function gotDescription(description){
-    peerConnection.setLocalDescription(description, onSetDescription, function() {console.log('Failed setting local description')});
- console.log('got description');
-}*/
-//The original:
+
 function gotDescription(description) {
     console.log('got description');
     peerConnection.setLocalDescription(description, function () {
@@ -127,9 +113,6 @@ function gotDescription(description) {
     }, function() {console.log('set description error')});
 }
 
-function onSetDescription(description){
-    serverConnection.send(JSON.stringify({'sdp': description}));
-}
 
 function gotRemoteStream(event){
     remoteVid.src = window.URL.createObjectURL(event.stream);
